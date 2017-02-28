@@ -1,0 +1,8 @@
+
+Osquid:UselessParenthesesCheck"!Remove those useless parentheses.(æÙãŸ8³Üûî§+
+Osquid:UselessParenthesesCheck"!Remove those useless parentheses.(Í¿šˆ8³Üûî§+
+Tsquid:UselessParenthesesCheck"!Remove those useless parentheses.(ÄÉÁßşÿÿÿÿ8³Üûî§+
+tsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(‚‚ş48³Üûî§+
+c$squid:AssignmentInSubExpressionCheck".Extract the assignment out of this expression.(æÙãŸ8³Üûî§+
+c$squid:AssignmentInSubExpressionCheck".Extract the assignment out of this expression.(Í¿šˆ8³Üûî§+
+h$squid:AssignmentInSubExpressionCheck".Extract the assignment out of this expression.(ÄÉÁßşÿÿÿÿ8³Üûî§+

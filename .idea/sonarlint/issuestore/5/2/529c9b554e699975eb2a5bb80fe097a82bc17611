@@ -1,0 +1,25 @@
+
+esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ŸžÂãúÿÿÿÿ
+dsquid:HiddenFieldCheck"?Rename "returnValue" which hides the field declared at line 20.(Œ—¶üþÿÿÿÿ
+Zsquid:S1226"@Introduce a new variable instead of reusing the parameter "val".(“Äá˜ûÿÿÿÿ
+?squid:S1172"*Remove this unused method parameter "ctx".(Œ­ôÏ
+asquid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+Gsquid:S1135"2Complete the task associated to this TODO comment.(ŸÏ›
+T
+squid:S106";Replace this usage of System.out or System.err by a logger.(ñ¼²¶ùÿÿÿÿ
+Zsquid:S1226"@Introduce a new variable instead of reusing the parameter "val".(Í¸¢Øüÿÿÿÿ
+msquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Öºå{
+esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ŸžÂãúÿÿÿÿ
+ssquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ãÀÇŸøÿÿÿÿ
+esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ŸžÂãúÿÿÿÿ
+esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ŸžÂãúÿÿÿÿ
+esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ŸžÂãúÿÿÿÿ
+esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ŸžÂãúÿÿÿÿ
+esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ŸžÂãúÿÿÿÿ
+Zsquid:S1226"@Introduce a new variable instead of reusing the parameter "val".(Ñ€¦„ùÿÿÿÿ
+esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ŸžÂãúÿÿÿÿ
+T
+squid:S106";Replace this usage of System.out or System.err by a logger.(¶§šÚüÿÿÿÿ
+dsquid:HiddenFieldCheck"?Rename "returnValue" which hides the field declared at line 20.(Œ—¶üþÿÿÿÿ
+T
+squid:S106";Replace this usage of System.out or System.err by a logger.(¬Û‚¾øÿÿÿÿ

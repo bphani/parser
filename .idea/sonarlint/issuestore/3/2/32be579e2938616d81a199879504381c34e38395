@@ -1,0 +1,4 @@
+
+Ksquid:S1481"*Remove this unused "lexer" local variable.(Çïƒıÿÿÿÿ8ÖÔ½ò§+
+Usquid:S1118":Add a private constructor to hide the implicit public one.(æü8æ®»ò§+
+Zsquid:S1854"9Remove this useless assignment to local variable "lexer".(Çïƒıÿÿÿÿ8ÖÔ½ò§+

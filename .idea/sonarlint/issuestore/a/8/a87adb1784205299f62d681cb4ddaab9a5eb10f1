@@ -1,0 +1,10 @@
+
+`squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ÐÇ™Š
+[
+squid:S106";Replace this usage of System.out or System.err by a logger.(ßâ¡üÿÿÿÿ8 ñŒï§+
+O
+squid:S106";Replace this usage of System.out or System.err by a logger.(ŒÑ€Ñ
+]squid:S2583"CChange this condition so that it does not always evaluate to "true"(ù¨¹Ùüÿÿÿÿ
+Osquid:S1118":Add a private constructor to hide the implicit public one.(µœ¾ì
+[
+squid:S106";Replace this usage of System.out or System.err by a logger.(ßâ¡üÿÿÿÿ8ìÏï§+
