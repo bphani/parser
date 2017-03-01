@@ -23,6 +23,6 @@ public class SingleExpressionListner extends ECMAScriptBaseListener {
 
     @Override
     public void exitDataFrameJoinExpression(ECMAScriptParser.DataFrameJoinExpressionContext ctx){
-        System.out.println(ctx.singleExpression()+"::");
+        //System.out.println(ctx.singleExpression()+"::");
     }
 }

@@ -647,7 +647,7 @@ singleExpression
  | singleExpression '=' expressionSequence                                # AssignmentExpression
  | singleExpression assignmentOperator expressionSequence                 # AssignmentOperatorExpression
  | DataFrame '[' expressionSequence ']'                                   # DataFrameExpression
- | singleExpression '.join(' singleExpression ')'                         # DataFrameJoinExpression
+ | singleExpression '.' dataframeCommand '(' singleExpression ')'         # DataFrameJoinExpression
  | This                                                                   # ThisExpression
  | Identifier                                                             # IdentifierExpression
  | literal                                                                # LiteralExpression
@@ -670,6 +670,14 @@ assignmentOperator
  | '&='
  | '^='
  | '|='
+ ;
+
+dataframeCommand
+ : 'join'
+ | 'toLowerCase'
+ | 'toUpperCase'
+ | 'trim'
+ | 'replaceEmpty'
  ;
 
 literal

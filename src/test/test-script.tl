@@ -6,3 +6,4 @@
 df['firstname'].join('lastname');
 x=4;
 df['age']=x
+df['abc'].trim()
