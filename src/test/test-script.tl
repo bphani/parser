@@ -3,7 +3,12 @@
 */
 
 
-df['firstname'].join('lastname');
-x=4;
+df['firstname'].join(df['lastname'])
+x=4
 df['age']=x
-df['abc'].trim()
+df['abc'].trim().replaceEmpty('NA')
+
+df[0].toLowerCase()
+
+
+df.getColumn('firstname').

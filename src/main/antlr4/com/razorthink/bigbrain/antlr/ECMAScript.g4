@@ -646,7 +646,8 @@ singleExpression
  | singleExpression '?' singleExpression ':' singleExpression             # TernaryExpression
  | singleExpression '=' expressionSequence                                # AssignmentExpression
  | singleExpression assignmentOperator expressionSequence                 # AssignmentOperatorExpression
- | DataFrame '[' expressionSequence ']'                                   # DataFrameExpression
+ | DataFrame '[' numericLiteral ']'                                       # DataFrameNumericExpression
+ | DataFrame '[' literal ']'                                              # DataFrameLiteralExpression
  | singleExpression '.' dataframeCommand '(' singleExpression ')'         # DataFrameJoinExpression
  | This                                                                   # ThisExpression
  | Identifier                                                             # IdentifierExpression

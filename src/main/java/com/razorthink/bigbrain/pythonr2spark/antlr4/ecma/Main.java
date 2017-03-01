@@ -2,6 +2,8 @@ package com.razorthink.bigbrain.pythonr2spark.antlr4.ecma;
 
 import com.razorthink.bigbrain.antlr.ECMAScriptLexer;
 import com.razorthink.bigbrain.antlr.ECMAScriptParser;
+import org.antlr.runtime.Token;
+import org.antlr.runtime.TokenRewriteStream;
 import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.DOTTreeGenerator;
 import org.antlr.stringtemplate.StringTemplate;
@@ -12,6 +14,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * Created by phaneendra on 2/28/17.
@@ -31,6 +34,14 @@ public class Main {
         ParseTreeWalker walker = new ParseTreeWalker();
         SingleExpressionListner extractor = new SingleExpressionListner(parser);
         walker.walk(extractor, tree);
+
+        for(Map.Entry<String, String> s:extractor.getCommands().entrySet()){
+            System.out.println(s.getKey()+":::"+s.getValue());
+        }
+
+        EvalVisitor visitor = new EvalVisitor(parser);
+        visitor.visit(tree);
+
 
     }
 }
