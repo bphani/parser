@@ -6,12 +6,14 @@ import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.DOTTreeGenerator;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.v4.runtime.ANTLRFileStream;
+import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.RuleContext;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  * Created by phaneendra on 2/28/17.
@@ -19,18 +21,26 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+            System.out.println("Jarvis : I am waiting for your command");
 
-        ECMAScriptLexer lexer = new ECMAScriptLexer(new ANTLRFileStream("src/test/test-script.tl"));
 
-        ECMAScriptParser parser = new ECMAScriptParser(new CommonTokenStream(lexer));
+            while (true)
+            {
+                    Scanner reader = new Scanner(System.in);  // Reading from System.in
+                    String commnad = reader.nextLine();
 
-        parser.setBuildParseTree(true);
-        RuleContext tree = parser.program();
-        System.out.println(tree.toStringTree(parser));
+                    ECMAScriptLexer lexer = new ECMAScriptLexer(new ANTLRInputStream(commnad));
 
-        ParseTreeWalker walker = new ParseTreeWalker();
-        SingleExpressionListner extractor = new SingleExpressionListner(parser);
-        walker.walk(extractor, tree);
+                    ECMAScriptParser parser = new ECMAScriptParser(new CommonTokenStream(lexer));
+
+                    parser.setBuildParseTree(true);
+                    RuleContext tree = parser.program();
+//            System.out.println(tree.toStringTree(parser));
+
+                    ParseTreeWalker walker = new ParseTreeWalker();
+                    SingleExpressionListner extractor = new SingleExpressionListner(parser);
+                    walker.walk(extractor, tree);
+            }
 
     }
 }

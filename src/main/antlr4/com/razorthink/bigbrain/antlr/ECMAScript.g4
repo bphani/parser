@@ -610,6 +610,25 @@ argumentList
 ///     ObjectLiteral
 ///     ( Expression )
 ///
+
+dataExpressionNumeric :
+DataFrame '(' numericLiteral ')';
+
+dataExpressionColumnName :
+DataFrame '(' StringLiteral ')';
+
+dataFrameData :
+dataExpressionNumeric | dataExpressionColumnName;
+
+dataFrameToUpperExp :
+ dataExpressionNumeric '.' dataFrameToUpperCommand
+ | dataExpressionColumnName '.' dataFrameToUpperCommand;
+
+ dataFrameToLowerExp :
+  dataExpressionNumeric '.' dataFrameToLowerCommand
+  | dataExpressionColumnName '.' dataFrameToLowerCommand;
+
+
 expressionSequence
  : singleExpression ( ',' singleExpression )*
  ;
@@ -627,8 +646,8 @@ singleExpression
  | Typeof singleExpression                                                # TypeofExpression
  | '++' singleExpression                                                  # PreIncrementExpression
  | '--' singleExpression                                                  # PreDecreaseExpression
- | '+' singleExpression                                                   # UnaryPlusExpression
  | '-' singleExpression                                                   # UnaryMinusExpression
+ | '+' singleExpression                                                   # UnaryPlusExpression
  | '~' singleExpression                                                   # BitNotExpression
  | '!' singleExpression                                                   # NotExpression
  | singleExpression ( '*' | '/' | '%' ) singleExpression                  # MultiplicativeExpression
@@ -647,7 +666,22 @@ singleExpression
  | singleExpression '=' expressionSequence                                # AssignmentExpression
  | singleExpression assignmentOperator expressionSequence                 # AssignmentOperatorExpression
  | DataFrame '[' expressionSequence ']'                                   # DataFrameExpression
- | singleExpression '.' dataframeCommand '(' singleExpression ')'         # DataFrameJoinExpression
+ | DataFrame '(' numericLiteral ')'                                       # DataFrameNumericExpression
+ | DataFrame '(' StringLiteral ')'                                       # DataFrameStringExpression
+ | dataExpressionNumeric '.' dataFrameJoinCommand '(' dataExpressionNumeric ')'               # DataFrameJoinExpression
+ | dataExpressionColumnName '.' dataFrameJoinCommand '(' dataExpressionColumnName ')'               # DataFrameJoinExpression
+ | dataExpressionNumeric '.' dataFrameJoinCommand '(' dataExpressionColumnName ')'               # DataFrameJoinExpression
+ | dataExpressionColumnName '.' dataFrameJoinCommand '(' dataExpressionNumeric ')'               # DataFrameJoinExpression
+  | dataFrameToLowerExp '.' dataFrameJoinCommand '(' dataFrameToLowerExp ')'               # DataFrameJoinExpression
+    | dataFrameToUpperExp '.' dataFrameJoinCommand '(' dataFrameToUpperExp ')'               # DataFrameJoinExpression
+    | dataFrameToUpperExp '.' dataFrameJoinCommand '(' dataFrameToLowerExp ')'               # DataFrameJoinExpression
+    | dataFrameToLowerExp '.' dataFrameJoinCommand '(' dataFrameToUpperExp ')'               # DataFrameJoinExpression
+ | dataExpressionNumeric '.' dataFrameToUpperCommand              # DataFrameToUpperExpression
+ | dataExpressionColumnName '.' dataFrameToUpperCommand               # DataFrameToUpperExpression
+ | dataExpressionNumeric '.' dataFrameToLowerCommand              # DataFrameToLowerExpression
+  | dataExpressionColumnName '.' dataFrameToLowerCommand               # DataFrameToLowerExpression
+  | dataExpressionNumeric '.' dataFrameTrimCommnad               # DataFrameTrimExpression
+  | dataExpressionColumnName '.' dataFrameTrimCommnad               # DataFrameTrimExpression
  | This                                                                   # ThisExpression
  | Identifier                                                             # IdentifierExpression
  | literal                                                                # LiteralExpression
@@ -656,6 +690,7 @@ singleExpression
  | '(' expressionSequence ')'                                             # ParenthesizedExpression
  ;
 
+//singleExpression '.' dataframeCommand '(' singleExpression ')'
 /// AssignmentOperator : one of
 ///     *=	/=	%=	+=	-=	<<=	>>=	>>>=	&=	^=	|=
 assignmentOperator
@@ -679,6 +714,11 @@ dataframeCommand
  | 'trim'
  | 'replaceEmpty'
  ;
+dataFrameJoinCommand: 'join';
+dataFrameToLowerCommand : 'toLowerCase' | 'toLower' | 'tolower' ;
+dataFrameToUpperCommand : 'toUpperCase' | 'toUpper' | 'toupper';
+dataFrameTrimCommnad : 'trim';
+dataFrameReplaceEmptyCommnad : 'replaceEmpty';
 
 literal
  : ( NullLiteral
