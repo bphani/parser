@@ -612,10 +612,10 @@ argumentList
 ///
 
 dataExpressionNumeric :
-DataFrame '(' numericLiteral ')';
+DataFrame '[' numericLiteral ']';
 
 dataExpressionColumnName :
-DataFrame '(' StringLiteral ')';
+DataFrame '[' StringLiteral ']';
 
 dataFrameData :
 dataExpressionNumeric | dataExpressionColumnName;
@@ -682,6 +682,7 @@ singleExpression
   | dataExpressionColumnName '.' dataFrameToLowerCommand               # DataFrameToLowerExpression
   | dataExpressionNumeric '.' dataFrameTrimCommnad               # DataFrameTrimExpression
   | dataExpressionColumnName '.' dataFrameTrimCommnad               # DataFrameTrimExpression
+  | dataExpressionColumnName  '.' dataFrameRegexReplaceCommand '[' literal ',' literal ']'          #DataFrameRegexReplaceExpression
  | This                                                                   # ThisExpression
  | Identifier                                                             # IdentifierExpression
  | literal                                                                # LiteralExpression
@@ -719,7 +720,7 @@ dataFrameToLowerCommand : 'toLowerCase' | 'toLower' | 'tolower' ;
 dataFrameToUpperCommand : 'toUpperCase' | 'toUpper' | 'toupper';
 dataFrameTrimCommnad : 'trim';
 dataFrameReplaceEmptyCommnad : 'replaceEmpty';
-
+dataFrameRegexReplaceCommand : 'replace';
 literal
  : ( NullLiteral
    | BooleanLiteral

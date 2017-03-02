@@ -11,6 +11,7 @@ public class SingleExpressionListner extends ECMAScriptBaseListener {
     private static String DATA_FRAME = "df";
     private static String UPPER_CASE = "upper";
     private static String LOWER_CASE = "lower";
+    private static String REGEX_REPLACE = "regexp_replace";
     ECMAScriptParser parser;
 
     public SingleExpressionListner( ECMAScriptParser parser )
@@ -217,6 +218,35 @@ public class SingleExpressionListner extends ECMAScriptBaseListener {
         pythonCode = pythonCode.replaceAll("\"", "'");
         System.out.print("Python Code :" + pythonCode);
 
+    }
+
+    //DataFrameRegexReplaceExpression
+    @Override
+    public void enterDataFrameRegexReplaceExpression( ECMAScriptParser.DataFrameRegexReplaceExpressionContext ctx )
+    {
+        int count = ctx.getChildCount();
+        org.antlr.v4.runtime.tree.ParseTree parse;
+        int loop = 0;
+        String pythonCode = "self.df = self.df.withColumn(";
+        String columnName = "";
+        while( loop < count ) {
+
+            parse = ctx.getChild(loop);
+            if( parse.getClass().getCanonicalName()
+                    .equals(ECMAScriptParser.DataExpressionColumnNameContext.class.getCanonicalName()) ) {
+                columnName = parse.getChild(2).getText();
+                pythonCode = pythonCode + columnName + ", " + REGEX_REPLACE + "(self."+DATA_FRAME+ "[" + columnName + "]" ;
+            }
+            if(parse.getClass().getCanonicalName().equals(ECMAScriptParser.LiteralContext.class.getCanonicalName()))
+            {
+                pythonCode = pythonCode + ", "+ parse.getText();
+        }
+        loop++;
+        }
+
+        pythonCode = pythonCode + "))";
+        pythonCode = pythonCode.replaceAll("\"","'");
+        System.out.print(pythonCode);
     }
 
 }
